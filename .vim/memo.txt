@@ -1,0 +1,1 @@
+ln -s fuji_lightline.vim ../bundle/lightline.vim/autoload/lightline/colorscheme/fuji_lightline.vim

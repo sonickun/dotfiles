@@ -1,0 +1,11 @@
+
+**/*.swp
+**/*.tags
+**/*.pyc
+**/*.un~
+
+log/*
+.undodir/*
+.nvim_python.log*
+bundle/*.vim
+
