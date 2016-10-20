@@ -1,5 +1,38 @@
 " 基本設定
 
+
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
+" bundleで管理するディレクトリを指定
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+ 
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+  
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+   
+" 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
+NeoBundle 'itchyny/lightline.vim'
+let g:lightline = {
+		\ 'colorscheme': 'solarized',
+		\ }
+NeoBundle 'davidhalter/jedi-vim'
+
+call neobundle#end()
+	 
+" Required:
+filetype plugin indent on
+	  
+" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+ " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+NeoBundleCheck
+	   
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
+
 " =================================================================
 " 見た目に関する設定
 " =================================================================
@@ -15,11 +48,23 @@ set laststatus=2
 
 " 不可視文字の表示に関する設定
 set list
-let &listchars="trail:\u22c5,extends:>,precedes:<,nbsp:%,eol:\u00ac,tab:\u22c5\u22c5"
+"let &listchars="trail:-,extends:>,precedes:<,nbsp:%,eol:\u00ac,tab:| "
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 let &fillchars="vert:\uffdc,fold:-,diff:="
 
 set t_Co=256
-colorscheme fonedark
+"colorscheme elflord
+colorscheme koehler
+"colorscheme molokai
+
+
+"set laststatus=r
+"NeoBundle 'itchyny/lightline.vim'
+"set statusline=%<%f\ %m%r%h%w
+"set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
+"set statusline+=%=%l/%L,%c%V%8
+" ヤンクしたテキストをそのままクリップボードにコピー
+set clipboard=unnamed
 
 " タブページを常に表示
 set showtabline=2
@@ -59,10 +104,10 @@ set noshowmode
 " au BufNewFile,BufRead *.py setf py3
 
 " 直接パスを指定しないと pyenv で global が 3 のみの時に動かなくなる
-if has('nvim')
-    let g:python3_host_prog = '/Users/akinori/.pyenv/versions/3.5.1/bin/python3'
-    let g:python_host_prog = '/Users/akinori/.pyenv/versions/2.7.11/bin/python'
-endif
+"if has('nvim')
+"    let g:python3_host_prog = '/Users/akinori/.pyenv/versions/3.5.1/bin/python3'
+"    let g:python_host_prog = '/Users/akinori/.pyenv/versions/2.7.11/bin/python'
+"endif
 
 " libpython3.5m.dylib が保存されている場所を指定する
 " let $PYTHON3_DLL='/Users/akinori/.pyenv/versions/3.4.3/lib'
@@ -98,7 +143,7 @@ endif
 " autocmd BufEnter * lcd %:p:h
 
 " スワップファイル用のDirectory
-set directory=~/.config/nvim/swap
+"set directory=~/.config/nvim/swap
 
 " バックスペースの働きについて
 " indent    autoindent を超えてバックスペースを働かせる
@@ -111,6 +156,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 " マウスを有効にする
 set mouse=a
+set ttymouse=xterm2
 
 " 検索コマンドで入力途中の文字列ににマッチしているものを表示する
 set incsearch
@@ -136,7 +182,7 @@ set expandtab
 " <Tab> が対応する空白の数
 set tabstop=4
 " タブやバックスペースの使用等の編集操作をするときに、タブが対応する空白の数
-set softtabstop=4
+set softtabstop=0
 " インデントの各段階に使われる空白の数
 set shiftwidth=4
  
@@ -172,3 +218,10 @@ if has("persistent_undo")
     set undodir=~/.config/nvim/.undodir
     set undofile
 endif
+
+" カッコ・クオーテーションの補完
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
