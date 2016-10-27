@@ -54,9 +54,10 @@ let &fillchars="vert:\uffdc,fold:-,diff:="
 
 set t_Co=256
 "colorscheme elflord
-colorscheme koehler
+"colorscheme koehler
 "colorscheme molokai
-
+colorscheme hybrid
+set background=dark
 
 "set laststatus=r
 "NeoBundle 'itchyny/lightline.vim'
