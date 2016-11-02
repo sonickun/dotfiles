@@ -226,3 +226,8 @@ inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
+
+imap <c-h> <Left>
+imap <c-j> <Down>
+imap <c-k> <Up>
+imap <c-l> <Right>
