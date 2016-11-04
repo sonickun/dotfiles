@@ -227,6 +227,7 @@ inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 
+" インサートモードでのカーソル移動
 imap <c-h> <Left>
 imap <c-j> <Down>
 imap <c-k> <Up>

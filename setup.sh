@@ -3,6 +3,7 @@
 # Symbolic link
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.screenrc ~/.screenrc
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Install Neobundle
 mkdir -p ~/.vim/bundle
