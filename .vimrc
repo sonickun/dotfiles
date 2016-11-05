@@ -221,11 +221,11 @@ if has("persistent_undo")
 endif
 
 " カッコ・クオーテーションの補完
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
+"inoremap { {}<LEFT>
+"inoremap [ []<LEFT>
+"inoremap ( ()<LEFT>
+"inoremap " ""<LEFT>
+"inoremap ' ''<LEFT>
 
 " インサートモードでのカーソル移動
 imap <c-h> <Left>
