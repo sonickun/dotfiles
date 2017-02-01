@@ -19,6 +19,7 @@ let g:lightline = {
 		\ 'colorscheme': 'solarized',
 		\ }
 NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'tpope/vim-commentary'
 
 call neobundle#end()
 	 
@@ -174,7 +175,7 @@ set autoindent
 set smartindent
 " set cindent
 " 前回の検索パターンに一致するテキストを強調表示する
-set nohlsearch
+" set nohlsearch
 
 set clipboard=unnamed
 
@@ -232,3 +233,6 @@ imap <c-h> <Left>
 imap <c-j> <Down>
 imap <c-k> <Up>
 imap <c-l> <Right>
+
+" 貼り付けのオプション
+set paste
