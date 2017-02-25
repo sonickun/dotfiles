@@ -236,3 +236,7 @@ imap <c-l> <Right>
 
 " 貼り付けのオプション
 set paste
+
+" sageファイルのカラーシンタックス
+au BufRead,BufNewFile *.sage  set filetype=python
+
