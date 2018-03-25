@@ -42,6 +42,7 @@ NeoBundleCheck
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " シンタックスハイライトをオンにする
 syntax enable
+set synmaxcol=100
 set laststatus=2
 "
 " コマンド（の一部）を画面の最下行に表示する

@@ -14,3 +14,10 @@ mkdir -p ~/.vim/colors
 git clone https://github.com/w0ng/vim-hybrid ~/.vim/vim-hybrid
 cp ~/.vim/vim-hybrid/colors/hybrid.vim ~/.vim/colors/
 
+# oh-my-zsh
+wget http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+cp ~/dotfiles/blinks.zsh-theme ~/.oh-my-zsh/themes/
+chsh -s /bin/zsh
+
+
