@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/sonickun/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -64,7 +64,26 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Workaround: Windows Terminal responds to tmux's OSC 11 / DA2 terminal queries,
+# and the responses leak to the shell via TTY echo. Running this inline after
+# oh-my-zsh ensures all responses (including slow DA2) have arrived by the time
+# we clear and drain them.
+if [[ -n $TMUX ]]; then
+    printf '\r\033[K' >/dev/tty
+    while read -r -s -t 0.1 -k 1 2>/dev/null; do :; done
+fi
+
 # User configuration
+
+# Load exported environment variables from .bashrc.
+# Reads only lines beginning with 'export' to avoid bash-specific syntax
+# (shopt, PS1, bash-completion, etc.) that zsh cannot handle.
+if [[ -f ~/.bashrc ]]; then
+    while IFS= read -r _line || [[ -n $_line ]]; do
+        [[ $_line =~ ^[[:space:]]*export[[:space:]] ]] && eval "$_line" 2>/dev/null
+    done < ~/.bashrc
+    unset _line
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -97,3 +116,8 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=$PYENV_ROOT/bin:$PATH
 # eval "$(pyenv init -)"
 alias open=xdg-open
+
+# nvm (Node Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
